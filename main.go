@@ -1,28 +1,20 @@
 package main
 
-import (
-	"fmt"
-	"strings"
-)
+import "fmt"
 
-type StringUnderlying string
-type StringUnderlying2 string
+type ErrType struct {
+}
 
-func toUpper(s StringUnderlying) StringUnderlying {
-	return StringUnderlying(strings.ToUpper(string(s)))
+func (e *ErrType) Error() string {
+	return "error msg"
+}
+
+func createErr() error {
+	var errType *ErrType = nil
+	return errType
 }
 
 func main() {
-	var str string
-	var strUnd StringUnderlying
-	var strUnd2 StringUnderlying2
-
-	str = "string"
-	strUnd = "strUnder"
-	strUnd2 = "strUnder"
-
-	fmt.Printf("%t\n", str == string(strUnd))
-	fmt.Printf("%s\n", toUpper(StringUnderlying(str)))
-	fmt.Printf("%s\n", toUpper(strUnd))
-	fmt.Printf("%s\n", toUpper(StringUnderlying(strUnd2)))
+	errType := createErr()
+	fmt.Printf("%t", errType == nil)
 }
