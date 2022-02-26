@@ -2,19 +2,21 @@ package main
 
 import "fmt"
 
-type ErrType struct {
-}
-
-func (e *ErrType) Error() string {
-	return "error msg"
-}
-
-func createErr() error {
-	var errType *ErrType = nil
-	return errType
-}
-
 func main() {
-	errType := createErr()
-	fmt.Printf("%t", errType == nil)
+	var x = 3
+	switch {
+	case x%2 == 0:
+		fmt.Println("2")
+		fallthrough
+	case x%3 == 0:
+		fmt.Println("3")
+	case x%4 == 0:
+		fmt.Println("4")
+		fallthrough
+	case x%5 == 0:
+		fmt.Println("5")
+		fallthrough
+	default:
+		fmt.Println("none")
+	}
 }
