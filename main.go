@@ -2,21 +2,16 @@ package main
 
 import "fmt"
 
+func appendInt64(sl []int64) {
+	sl = append(sl, 1000)
+	fmt.Printf("%v\n", sl)
+}
+
 func main() {
-	var x = 3
-	switch {
-	case x%2 == 0:
-		fmt.Println("2")
-		fallthrough
-	case x%3 == 0:
-		fmt.Println("3")
-	case x%4 == 0:
-		fmt.Println("4")
-		fallthrough
-	case x%5 == 0:
-		fmt.Println("5")
-		fallthrough
-	default:
-		fmt.Println("none")
+	sl := make([]int64, 0, 10)
+	for i := 0; i < 9; i++ {
+		sl = append(sl, int64(i))
 	}
+	appendInt64(sl)
+	fmt.Printf("%v\n", sl)
 }
