@@ -2,27 +2,36 @@ package main
 
 import "fmt"
 
-type Inner struct {
+type TPtr struct {
 
 }
 
-func (s *Inner) Hello() {
-	fmt.Println("inner")
+func (t *TPtr) Hello() {
+	fmt.Println("hello from TPtr")
 }
 
 
-type Outer struct {
-	Inner
+
+type TValue struct {
+
 }
 
-func (s *Outer) Hello() {
-	fmt.Println("outer")
+func (t *TValue) Hello() {
+	fmt.Println("hello from TValue")
 }
-
 
 
 func main() {
-	o := &Outer{}
-	o.Hello()
-	o.Inner.Hello()
+	pTPtr := &TPtr{}
+	pTPtr.Hello()
+
+	vTPtr := TPtr{}
+	vTPtr.Hello()
+
+
+	pTValue := &TValue{}
+	pTValue.Hello()
+
+	vTValue := TValue{}
+	vTValue.Hello()
 }
