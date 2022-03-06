@@ -1,37 +1,19 @@
 package main
 
-import "fmt"
-
-type TPtr struct {
-
+type Interface1 interface {
+	Method() string
 }
 
-func (t *TPtr) Hello() {
-	fmt.Println("hello from TPtr")
+type Interface2 interface {
+	Method() string
 }
 
-
-
-type TValue struct {
-
+type Interface3 interface {
+	Interface1
+	Interface2
 }
-
-func (t *TValue) Hello() {
-	fmt.Println("hello from TValue")
-}
-
 
 func main() {
-	pTPtr := &TPtr{}
-	pTPtr.Hello()
-
-	vTPtr := TPtr{}
-	vTPtr.Hello()
-
-
-	pTValue := &TValue{}
-	pTValue.Hello()
-
-	vTValue := TValue{}
-	vTValue.Hello()
+	var i Interface3
+	i.Method()
 }
