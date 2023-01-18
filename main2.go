@@ -8,7 +8,7 @@ import (
 
 var NumberOfWorkers int = 8
 
-func main() {
+func main1() {
 	var urls = []string{
 		"http://ya.ru",
 		"http://ya.ru",
@@ -77,4 +77,28 @@ func merge(cs ...<-chan int) <-chan int {
 	}()
 
 	return result
+}
+
+type foo struct{}
+
+func (f *foo) A() {}
+func (f *foo) B() {}
+func (f *foo) C() {}
+
+type ab interface {
+	A()
+	B()
+}
+
+type bc interface {
+	B()
+	C()
+}
+
+func main() {
+	var f ab = &foo{}
+	y := f.(bc)
+	//y.A()
+	y.C()
+	y.B()
 }
